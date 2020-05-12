@@ -64,6 +64,9 @@
                                 @endif
                             </div>
                         </div>
+                            @if (session('oauth_error'))
+                                {{ session('oauth_error') }}
+                            @endif
                     </form>
                 </div>
             </div>
