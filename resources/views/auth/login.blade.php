@@ -64,10 +64,11 @@
                                 @endif
                             </div>
                         </div>
-                        @if (session('oauth_error'))
+                        {{-- twitterログインで書いたもの --}}
+                        {{-- @if (session('oauth_error'))
                             {{ session('oauth_error') }}
                         @endif
-                        <a href="/login/twitter"  class="btn btn-default btn-md">Log in with Github</a>
+                        <a href="/login/twitter"  class="btn btn-default btn-md">Log in with Github</a> --}}
                     </form>
                 </div>
             </div>
