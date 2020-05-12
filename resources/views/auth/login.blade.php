@@ -67,6 +67,7 @@
                             @if (session('oauth_error'))
                                 {{ session('oauth_error') }}
                             @endif
+                        <a href="/login/teitter"  class="btn btn-default btn-md">Log in with Github</a>
                     </form>
                 </div>
             </div>
