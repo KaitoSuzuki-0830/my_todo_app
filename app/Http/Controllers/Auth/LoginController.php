@@ -52,7 +52,7 @@ class LoginController extends Controller
     /**
      * OAuth認証の結果受け取り
      *
-     * @param str $provider
+     *@param str $provider
      * @return \Illuminate\Http\Response
      */
     public function handleProviderCallback($provider)
@@ -61,6 +61,18 @@ class LoginController extends Controller
             $providerUser = \Socialite::with($provider)->user();
         } catch(\Exception $e) {
             return redirect('/login')->with('oauth_error', '予期せぬエラーが発生しました');
+        }
+
+        if ($email = $providerUser->getEmail()) {
+            Auth::login(User::firstOrCreate([
+                'email' => $email
+            ], [
+                'name' => $providerUser->getName()
+            ]));
+
+            return redirect($this->redirectTo);
+        } else {
+            return redirect('/login')->with('oauth_error', 'メールアドレスが取得できませんでした');
         }
     }
 }
