@@ -24,3 +24,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Twitterログイン
 Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
+
+Route::get('/folders/{id}/tasks'.'TaskController@index')->name('tasks.index');
